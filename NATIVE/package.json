@@ -1,6 +1,6 @@
 {
-  "name": "expo-template-blank",
-  "description": "The Blank project template includes the minimum dependencies to run and an empty root component.",
+  "name": "ploti",
+  "description": "Nunua Mtaani",
   "version": "36.0.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-elements": "^1.2.7",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {

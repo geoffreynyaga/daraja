@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity  } from "react-native";
 
 class MyFirstExpoApp extends Component {
   constructor(props) {
