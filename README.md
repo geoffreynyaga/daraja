@@ -18,7 +18,7 @@
     3. Workflow
         - Install/Setup [✔️]
         - Stylesheet [✔️]
-        - React Native Elements [✔️]
+        - React Native Elements [❌]
         - React Navigation [❌]
         - API Calls (Fetch)
             ○ GET/POST etc [❌]
