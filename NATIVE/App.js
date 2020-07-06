@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import HomeScreen from "./components/HomeScreen";
+import { View } from "react-native";
 
-
-class MyFirstExpoApp extends Component {
+import TabNavigator from "./navigation/mainTabNavigator";
+class App extends Component {
   constructor(props) {
     super(props);
   }
@@ -18,10 +18,10 @@ class MyFirstExpoApp extends Component {
           flexDirection: "column",
         }}
       >
-        <HomeScreen />
+        <TabNavigator />
       </View>
     );
   }
 }
 
-export default MyFirstExpoApp;
+export default App;
