@@ -12,9 +12,9 @@ class App extends Component {
       <View
         style={{
           flex: 1,
-          borderWidth: 4,
-          borderColor: "red",
-          marginTop: 20,
+          // borderWidth: 4,
+          // borderColor: "red",
+          marginTop: 10,
           flexDirection: "column",
         }}
       >
