@@ -1,15 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   View,
   Text,
   TouchableOpacity,
   ActivityIndicator,
-  StyleSheet,
+  Image as Im
+
+
 } from "react-native";
 import { Icon, Image } from "react-native-elements";
 
 export default function HomeScreen(props) {
+  const [products, setProducts] = useState(null);
+
+  useEffect(() => {
+    // ComponentDidMount
+    console.log("useEffect");
+    getProductsList();
+  }, []);
+
+  function getProductsList() {
+    return fetch("http://10.0.2.2:8000/api/products/list/", {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        // console.log(json, "json");
+        setProducts(json);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
   return (
     <View
       style={{
@@ -53,7 +77,6 @@ export default function HomeScreen(props) {
             marginHorizontal: 10,
             height: 50 + "%",
             flexDirection: "row",
-
             justifyContent: "flex-start",
             alignItems: "center",
             paddingLeft: 10,
@@ -219,7 +242,6 @@ export default function HomeScreen(props) {
         }}
       >
         {/*  Title Row */}
-
         <View
           style={{
             flex: 1,
@@ -246,275 +268,275 @@ export default function HomeScreen(props) {
         </View>
 
         {/*  Products Row */}
-        <View
-          style={{
-            flex: 9,
-            // borderWidth: 1,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginHorizontal: 10,
-          }}
-        >
-          {/* Kienyeji Mangoes Product  */}
           <View
             style={{
-              flex: 1,
-              // borderWidth: StyleSheet.hairlineWidth,
-              flexDirection: "column",
-              backgroundColor: "#FFFFFF",
-              height: 90 + "%",
-              alignItems: "center",
+              flex: 9,
+              // borderWidth: 1,
+              flexDirection: "row",
               justifyContent: "space-between",
-              borderRadius: 10,
-              // paddingRight: 10,
-              marginRight: 10,
+              alignItems: "center",
+              marginHorizontal: 10,
             }}
           >
-            {/* Like Button Row  */}
-            <View
-              style={{
-                flex: 1,
-                position: "absolute",
-                // borderWidth: 1,
-                justifyContent: "space-between",
-                alignItems: "center",
-                flexDirection: "row",
-                zIndex: 99,
-              }}
-            >
-              <View
-                style={{
-                  // borderWidth: 1,
-                  flex: 8,
-                  alignSelf: "flex-end",
-                  justifyContent: "flex-end",
-                }}
-              ></View>
+           {/* Product 1*/}
 
-              <View
-                style={{
-                  // borderWidth: 1,
-                  flex: 2,
-                  justifyContent: "flex-end",
-                }}
-              >
-                <Icon name="heart" type="evilicon" color="grey" size={34} />
-              </View>
-            </View>
-            {/* Product Image  */}
-            <View
-              style={{
-                flex: 5,
-                flexDirection: "column",
-                // borderWidth: 1,
-                // borderColor: "red",
-                justifyContent: "center",
-                alignItems: "center",
-                width: 80 + "%",
-              }}
-            >
-              {/* Image with custom placeholder content  */}
-              <Image
-                source={require("../assets/products/Kienyeji-Mangoes.png")}
-                resizeMode="contain"
-                style={{
-                  height: "100%",
-                  width: "100%",
-                }}
-                containerStyle={{
-                  // borderWidth: 1,
-                  // borderColor: "blue",
-                  alignSelf: "flex-start",
-                  alignContent: "center",
-                  justifyContent: "flex-start",
-                }}
-                PlaceholderContent={<ActivityIndicator />}
-              />
-            </View>
-            {/* Product name and cost */}
-            <View
-              style={{
-                flex: 2.5,
-                // borderWidth: 1,
-                justifyContent: "flex-start",
-                alignSelf: "flex-start",
-                flexDirection: "column",
-                marginTop: 5,
-                marginLeft: 10,
-              }}
-            >
-              <Text style={{ fontSize: 14 }}>Ksh. 25</Text>
-              <Text style={{ fontWeight: "bold", fontSize: 16 }}>
-                Kienyeji Mangoes
-              </Text>
-              <Text>3</Text>
-            </View>
+             <View
+                    style={{
+                      flex: 1,
+                      // borderWidth: StyleSheet.hairlineWidth,
+                      flexDirection: "column",
+                      backgroundColor: "#FFFFFF",
+                      height: 80 + "%",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      borderRadius: 10,
+                      // paddingRight: 10,
+                      marginRight: 10,
+                    }}
+                  >
+                    {/* Like Button Row  */}
+                    <View
+                      style={{
+                        flex: 1,
+                        position: "absolute",
+                        // borderWidth: 1,
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        flexDirection: "row",
+                        zIndex: 99,
+                      }}
+                    >
+                      <View
+                        style={{
+                          // borderWidth: 1,
+                          flex: 8,
+                          alignSelf: "flex-end",
+                          justifyContent: "flex-end",
+                        }}
+                      ></View>
 
-            {/* Add to Cart  */}
-            <TouchableOpacity
-              style={{
-                flex: 1.5,
-                flexDirection: "row",
-                // borderWidth: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-                width: 100 + "%",
-                backgroundColor: "#FCBF00",
-                marginTop: 5,
-                marginRight: 0,
-                paddingHorizontal: 0,
-                borderBottomRightRadius: 10,
-                borderBottomLeftRadius: 10,
-              }}
-            >
-              <Text style={{ color: "white", fontSize: 18 }}>Add to Cart</Text>
-            </TouchableOpacity>
+                      <View
+                        style={{
+                          // borderWidth: 1,
+                          flex: 2,
+                          justifyContent: "flex-end",
+                        }}
+                      >
+                        <Icon
+                          name="heart"
+                          type="evilicon"
+                          color="grey"
+                          size={34}
+                        />
+                      </View>
+                    </View>
+                    {/* Product Image  */}
+                    <View
+                      style={{
+                        flex: 5,
+                        flexDirection: "column",
+                        // borderWidth: 1,
+                        // borderColor: "red",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: 80 + "%",
+                      }}
+                    >
+                      {/* Image with custom placeholder content  */}
+
+                      <Image
+                        source={{
+                          uri: products !== null ? products[0].picture : "",
+                        }}
+                        resizeMode="contain"
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                        }}
+                        containerStyle={{
+                          // borderWidth: 1,
+                          // borderColor: "blue",
+                          alignSelf: "flex-start",
+                          alignContent: "center",
+                          justifyContent: "flex-start",
+                        }}
+                        PlaceholderContent={<ActivityIndicator />}
+                      />
+                    </View>
+                    {/* Product name and cost */}
+                    <View
+                      style={{
+                        flex: 2.5,
+                        // borderWidth: 1,
+                        justifyContent: "flex-start",
+                        alignSelf: "flex-start",
+                        flexDirection: "column",
+                        marginTop: 5,
+                        marginLeft: 10,
+                      }}
+                    >
+                      <Text style={{ fontSize: 14 }}>Ksh. {products !== null ? products[0].price : ""}</Text>
+                      <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+                        {products !== null ? products[0].name : ""}
+                      </Text>
+                      <Text>{products !== null ? products[0].description : ""}</Text>
+                    </View>
+
+                    {/* Add to Cart  */}
+                    <TouchableOpacity
+                      style={{
+                        flex: 1.5,
+                        flexDirection: "row",
+                        // borderWidth: 1,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexDirection: "row",
+                        width: 100 + "%",
+                        backgroundColor: "#FCBF00",
+                        marginTop: 5,
+                        marginRight: 0,
+                        paddingHorizontal: 0,
+                        borderBottomRightRadius: 10,
+                        borderBottomLeftRadius: 10,
+                      }}
+                    >
+                      <Text style={{ color: "white", fontSize: 18 }}>
+                        Add to Cart
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+           
+           {/* Product 2 */}
+           
+             <View
+                    style={{
+                      flex: 1,
+                      // borderWidth: StyleSheet.hairlineWidth,
+                      flexDirection: "column",
+                      backgroundColor: "#FFFFFF",
+                      height: 80 + "%",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      borderRadius: 10,
+                      // paddingRight: 10,
+                      marginRight: 10,
+                    }}
+                  >
+                    {/* Like Button Row  */}
+                    <View
+                      style={{
+                        flex: 1,
+                        position: "absolute",
+                        // borderWidth: 1,
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        flexDirection: "row",
+                        zIndex: 99,
+                      }}
+                    >
+                      <View
+                        style={{
+                          // borderWidth: 1,
+                          flex: 8,
+                          alignSelf: "flex-end",
+                          justifyContent: "flex-end",
+                        }}
+                      ></View>
+
+                      <View
+                        style={{
+                          // borderWidth: 1,
+                          flex: 2,
+                          justifyContent: "flex-end",
+                        }}
+                      >
+                        <Icon
+                          name="heart"
+                          type="evilicon"
+                          color="grey"
+                          size={34}
+                        />
+                      </View>
+                    </View>
+
+                    {/* Product Image  */}
+                    <View
+                      style={{
+                        flex: 5,
+                        flexDirection: "column",
+                        // borderWidth: 1,
+                        // borderColor: "red",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: 80 + "%",
+                      }}
+                    >
+                      {/* Image with custom placeholder content  */}
+
+                      <Image
+                        source={{
+                          uri: products !== null ? products[1].picture : "",
+                        }}
+                        resizeMode="contain"
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                        }}
+                        containerStyle={{
+                          // borderWidth: 1,
+                          // borderColor: "blue",
+                          alignSelf: "flex-start",
+                          alignContent: "center",
+                          justifyContent: "flex-start",
+                        }}
+                        PlaceholderContent={<ActivityIndicator />}
+                      />
+                    </View>
+                    {/* Product name and cost */}
+                    <View
+                      style={{
+                        flex: 2.5,
+                        // borderWidth: 1,
+                        justifyContent: "flex-start",
+                        alignSelf: "flex-start",
+                        flexDirection: "column",
+                        marginTop: 5,
+                        marginLeft: 10,
+                      }}
+                    >
+                      <Text style={{ fontSize: 14 }}>Ksh. {products !== null ? products[1].price : ""}</Text>
+                      <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+                        {products !== null ? products[1].name:""}
+                      </Text>
+                      <Text>{products !== null ? products[1].description : ""}</Text>
+                    </View>
+
+                    {/* Add to Cart  */}
+                    <TouchableOpacity
+                      style={{
+                        flex: 1.5,
+                        flexDirection: "row",
+                        // borderWidth: 1,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexDirection: "row",
+                        width: 100 + "%",
+                        backgroundColor: "#FCBF00",
+                        marginTop: 5,
+                        marginRight: 0,
+                        paddingHorizontal: 0,
+                        borderBottomRightRadius: 10,
+                        borderBottomLeftRadius: 10,
+                      }}
+                    >
+                      <Text style={{ color: "white", fontSize: 18 }}>
+                        Add to Cart
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                
           </View>
-
-          {/* Dispenser Re-Fills Product  */}
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: "#FFFFFF",
-              flexDirection: "column",
-              height: 90 + "%",
-              alignItems: "center",
-              justifyContent: "space-between",
-              borderRadius: 10,
-              // paddingRight: 10,
-              marginRight: 10,
-            }}
-          >
-            {/* Like Button Row  */}
-            <View
-              style={{
-                flex: 1,
-                position: "absolute",
-                // borderWidth: 1,
-                justifyContent: "space-between",
-                alignItems: "center",
-                flexDirection: "row",
-                zIndex: 99,
-              }}
-            >
-              <View
-                style={{
-                  // borderWidth: 1,
-                  flex: 8,
-                  alignSelf: "flex-end",
-                  justifyContent: "flex-end",
-                }}
-              ></View>
-
-              <View
-                style={{
-                  // borderWidth: 1,
-                  flex: 2,
-                  justifyContent: "flex-end",
-                }}
-              >
-                <Icon name="heart" type="evilicon" color="grey" size={34} />
-              </View>
-            </View>
-            {/* Product Image  */}
-
-            <View
-              style={{
-                flex: 5,
-                flexDirection: "column",
-                // borderWidth: 1,
-                // borderColor: "red",
-                justifyContent: "center",
-                alignItems: "center",
-                width: 80 + "%",
-              }}
-            >
-              {/* Image with custom placeholder content  */}
-              <Image
-                source={require("../assets/products/water-dispenser.png")}
-                resizeMode="contain"
-                style={{
-                  height: "100%",
-                  width: "100%",
-                }}
-                containerStyle={{
-                  // borderWidth: 1,
-                  // borderColor: "blue",
-                  alignSelf: "flex-start",
-                  alignContent: "center",
-                  justifyContent: "flex-start",
-                }}
-                PlaceholderContent={<ActivityIndicator />}
-              />
-            </View>
-
-            {/* Product name and cost */}
-            <View
-              style={{
-                flex: 2.5,
-                // borderWidth: 1,
-                justifyContent: "flex-start",
-                alignSelf: "flex-start",
-                flexDirection: "column",
-                marginTop: 5,
-                marginLeft: 10,
-              }}
-            >
-              <Text style={{ fontSize: 14 }}>Ksh. 300</Text>
-              <Text style={{ fontWeight: "bold", fontSize: 16 }}>
-                Dispenser Re-fills
-              </Text>
-              <Text>10 litres</Text>
-            </View>
-
-            {/* Add to Cart  */}
-            <View
-              style={{
-                flex: 1.5,
-                flexDirection: "row",
-                // borderWidth: 1,
-                justifyContent: "space-around",
-                alignItems: "center",
-                flexDirection: "row",
-                width: 100 + "%",
-                backgroundColor: "#70BE0C",
-                marginTop: 5,
-                marginRight: 0,
-                paddingHorizontal: 0,
-                borderBottomRightRadius: 10,
-                borderBottomLeftRadius: 10,
-              }}
-            >
-              <View>
-                <Icon
-                  raised
-                  name="minus"
-                  type="antdesign"
-                  color="#436B1C"
-                  size={14}
-                />
-              </View>
-              <View>
-                <Text
-                  style={{ color: "white", fontSize: 18, fontWeight: "bold" }}
-                >
-                  01
-                </Text>
-              </View>
-              <View>
-                <Icon
-                  raised
-                  name="plus"
-                  type="antdesign"
-                  color="#436B1C"
-                  size={14}
-                />
-              </View>
-            </View>
-          </View>
-        </View>
+        
       </View>
 
       {/* DAILY NEEDS ROW */}

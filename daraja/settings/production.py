@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "storages",
     "mpesa",
+    "products",
 ]
 
 MIDDLEWARE = [

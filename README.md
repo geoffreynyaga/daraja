@@ -18,10 +18,11 @@
     3. Workflow
         - Install/Setup [✔️]
         - Stylesheet [✔️]
-        - React Native Elements [❌]
-        - React Navigation [❌]
+        - React Native Elements [✔️]
+        - React Navigation [✔️]
         - API Calls (Fetch)
-            ○ GET/POST etc [❌]
+            ○ GET/POST etc [✔️]
+            ○ POST[❌]
             ○ Tokens [❌]
             ○ React SWR (State While Revalidate) - Persisting data , Caching etc[❌]
         - Authentication [❌]
